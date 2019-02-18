@@ -1,117 +1,153 @@
+
+<!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8" />
-<meta name="description" content="" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+<meta charset="utf-8" >
+
 <title>JS中为什么(&#39; &#39; == 0) 为true | 方二十三</title>
+<meta name="description" content="👊You can do anything set your mind to man.💪">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
 <link rel="shortcut icon" href="https://iemsauce3.github.io/favicon.ico">
 <link rel="stylesheet" href="https://iemsauce3.github.io/styles/main.css">
 
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
   </head>
   <body>
-    <div class="main">
-      <div class="main-content">
-        <div class="site-header">
-  <a href="https://iemsauce3.github.io">
-  <img class="avatar" src="https://iemsauce3.github.io/images/avatar.png" alt="" width="80px" height="80px">
-  </a>
-  <h1 class="site-title">
-    方二十三
-  </h1>
-  <p class="site-description">
-    You can do anything set your mind to man.
-  </p>
-  <div class="menu-container">
-    
-      
-        <a href="/" class="menu">
-          首页
-        </a>
-      
-    
-      
-        <a href="/archives" class="menu">
-          归档
-        </a>
-      
-    
-      
-        <a href="/tags" class="menu">
-          标签
-        </a>
-      
-    
-      
-        <a href="/post/about/" class="menu">
-          关于
-        </a>
-      
-    
-      
-        <a href="https://iemsauce3.gitee.io/iem3" class="menu" target="_blank">
-          我们
-        </a>
-      
-    
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://iemsauce3.github.io">
+        <img class="avatar" src="https://iemsauce3.github.io/images/avatar.png" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://iemsauce3.github.io">
+        <h1 class="site-title">方二十三</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
   </div>
 </div>
 
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
       
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about/" class="menu purple-link">
+            关于
+          </a>
+        
+      
+        
+          <a class="menu purple-link" href="https://iemsauce3.gitee.io/iem3" class="menu" target="_blank">
+            我们
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
         <div class="post-detail">
-          <article class="post">
-            <h2 class="post-title">
-              JS中为什么(&#39; &#39; == 0) 为true
-            </h2>
-            <div class="post-info">
-              <time class="post-time">
-                · 2019-02-15 ·
-              </time>
-              
-                <a href="https://iemsauce3.github.io/tag/w-n7IYtB_" class="post-tags">
-                  # 前端
-                </a>
-              
-                <a href="https://iemsauce3.github.io/tag/0znrnUcu9" class="post-tags">
-                  # js
-                </a>
-              
-            </div>
-            <div class="post-content">
-              <p>两边类型不相同出现以下情况：<br>0为假即false<br>空值也或空格也为false<br>false==false恒成立 </p>
+          <h2 class="post-title">JS中为什么(&#39; &#39; == 0) 为true</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2019-02-14</span>
+            
+              <span>
+                <i class="icon-pricetags-outline"></i>
+                
+                  <a href="https://iemsauce3.github.io/tag/w-n7IYtB_">
+                    前端
+                    
+                      ，
+                    
+                  </a>
+                
+                  <a href="https://iemsauce3.github.io/tag/0znrnUcu9">
+                    js
+                    
+                  </a>
+                
+              </span>
+            
+          </div>
+          <div class="post-content">
+            <p>两边类型不相同出现以下情况：<br>0为假即false<br>空值也或空格也为false<br>false==false恒成立 </p>
 <p>只有两边类型相同时才可以真正对比是否完全一样<br>比如<br>&quot;a&quot;==&quot;b&quot;返回false<br>1==2返回false</p>
 <p><strong>解决方案：</strong></p>
 <p>可以用 isNaN() 判断是不是 或 typeOf() 判断好类型再去判断 parseInt() 转int 值等</p>
 
-            </div>
-          </article>
+          </div>
         </div>
-    
-        
-          <div class="next-post">
-            <div class="next">下一篇</div>
-            <a href="https://iemsauce3.github.io/post/iemsauce3">
-              <h3 class="post-title">
-                iemsauce3
-              </h3>
-            </a>
-          </div>  
-        
 
         
-    
-        <div class="site-footer">
+          <div class="next-post">
+            <a class="purple-link" href="https://iemsauce3.github.io/post/iemsauce3">
+              <h3 class="post-title">
+                下一篇：iemsauce3
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+
+      <div class="site-footer">
+  <div class="slogan">👊You can do anything set your mind to man.💪</div>
   Powered by Hve Notes
 </div>
 
-<script>
-  hljs.initHighlightingOnLoad()
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
 </script>
 
-      </div>
-    </div>
+
+
+
   </body>
 </html>
