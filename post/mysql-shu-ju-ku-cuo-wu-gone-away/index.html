@@ -88,7 +88,8 @@
             
           </div>
           <div class="post-content">
-            <blockquote>
+            <h1 id="mysql-gone-away">mysql 数据库错误 gone away</h1>
+<blockquote>
 <p>MySQL server has gone away<br>原因1:sql还原的文件大于预设的值</p>
 </blockquote>
 <p><strong>解决：</strong><br>查看预设值<br>show global variables like &#39;max_allowed_packet&#39;<br>设置为50M<br>set global max_allowed_packet=1024<em>1024</em>50</p>
